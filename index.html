@@ -1,1 +1,231 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IaSmarKet Products</title>
+        <style>
+            body {
+                background-color: black;
+                color: white;
+                font-family: Arial, sans-serif;
+            }
+    
+            .datetime {
+                text-align: center;
+                color: gray;
+                margin-top: 20px;
+            }
+    
+            .date,
+            .time {
+                font-size: 48px;
+            }
+    
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: flex-start;
+                min-height: calc(100vh - 7cm);
+                padding: 20px;
+            }
+    
+            .product {
+                width: calc(100% / 4 - 40px);
+                margin: 10px;
+                text-align: center;
+                border: 1px solid red;
+                border-radius: 10px;
+                overflow: hidden;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                background-color: black;
+                color: white;
+                transition: transform 0.3s;
+            }
+    
+            .product:hover {
+                transform: scale(1.05);
+            }
+    
+            .product .content {
+                height: 200px;
+                overflow: hidden;
+            }
+    
+            .product img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+    
+            .product .description {
+                margin-top: 10px;
+                flex-grow: 1;
+            }
+    
+            .product .more-link {
+                margin-top: 5px;
+                cursor: pointer;
+                color: blue;
+                text-decoration: underline;
+            }
+    
+            .pagination {
+                text-align: center;
+                margin: 20px 0;
+                width: 100%;
+            }
+    
+            .pagination a {
+                color: white;
+                padding: 8px 16px;
+                text-decoration: none;
+                background-color: gray;
+                margin: 0 4px;
+                border-radius: 4px;
+            }
+    
+            .pagination a:hover {
+                background-color: #575757;
+            }
+    
+            @media (min-width: 768px) and (max-width: 991px) {
+                .product {
+                    width: calc(100% / 3 - 40px);
+                }
+            }
+    
+            @media (max-width: 767px) {
+                .product {
+                    width: calc(100% - 40px);
+                }
+            }
+    
+            /* Style pour le bouton flottant */
+            .floating-button {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: red;
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                text-align: center;
+                font-size: 18px;
+                cursor: pointer;
+                z-index: 1000;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+    
+            /* Style pour la barre de recherche */
+            .search-bar {
+                width: 100%;
+                text-align: center;
+                margin: 20px 0;
+            }
+    
+            .search-bar input {
+                width: 50%;
+                padding: 10px;
+                border-radius: 5px;
+                border: none;
+                font-size: 16px;
+            }
+    
+            @media (max-width: 767px) {
+                .search-bar input {
+                    width: 80%;
+                }
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="datetime">
+            <div class="date" id="comment"></div>
+            <div class="date" id="date"></div>
+            <div class="time" id="time"></div>
+        </div>
+        <!-- Pagination -->
+        <div class="pagination">Pages :
 
+         
+            </div>
+                <!-- Barre de recherche -->
+                <div class="search-bar">serche:
+                <input type="text" id="searchInput" placeholder=" search and filter by product / name Ex:'Blender' / discount percentage Ex:'30%' ..." onkeyup="filterProducts()">
+                </div>
+
+                <div class="container" id="productContainer">
+                    <!-- Exemple de produits -->
+          
+            
+
+<div class="product"><a href="https://www.amazon.com/dp/B00IJ0ALYS?tag=eloabder-20&linkCode=osi&th=1&psc=1"><img src="https://m.media-amazon.com/images/I/41c+lcImYrL._SL500_.jpg" alt="Product Image"></a><p>DEWALT 20V MAX Cordless Drill and Impact Driver, Power Tool Combo Kit with 2 Batteries and Charger (DCK240C2)</p><p> -17% 0FF </p><p>$149.00</p><a href="https://www.amazon.com/dp/B00IJ0ALYS?tag=eloabder-20&linkCode=osi&th=1&psc=1">View Product</a></div><div class="product"><a href="https://www.amazon.com/dp/B0C3PQHGR7?tag=eloabder-20&linkCode=osi&th=1&psc=1"><img src="https://m.media-amazon.com/images/I/41bV0x-rrnL._SL500_.jpg" alt="Product Image"></a><p>DEWALT 20V MAX Cordless Drill, Impact Driver, 2-Tool Power Tool Combo Kit, Brushless Power Tool Set with 2 Batteries and Charger Included (DCK277D2)</p><p> -32% 0FF </p><p>$169.00</p><a href="https://www.amazon.com/dp/B0C3PQHGR7?tag=eloabder-20&linkCode=osi&th=1&psc=1">View Product</a></div><div class="product"><a href="https://www.amazon.com/dp/B01DQ19AP0?tag=eloabder-20&linkCode=osi&th=1&psc=1"><img src="https://m.media-amazon.com/images/I/411xdFnEtWL._SL500_.jpg" alt="Product Image"></a><p>DEWALT 20V MAX Hammer Drill and Impact Driver, Cordless Power Tool Combo Kit with 2 Batteries and Charger (DCK299M2)</p><p> -9% 0FF </p><p>$370.99</p><a href="https://www.amazon.com/dp/B01DQ19AP0?tag=eloabder-20&linkCode=osi&th=1&psc=1">View Product</a></div><div class="product"><a href="https://www.amazon.com/dp/B0FH5K1T3Q?tag=eloabder-20&linkCode=osi&th=1&psc=1"><img src="https://m.media-amazon.com/images/I/41NNBc8b2OL._SL500_.jpg" alt="Product Image"></a><p>DEWALT 20V MAX XR Brushless Cordless 1/2 in. Drill/Driver Kit With POWERPACK Batteries and Charger (DCD801QQ2)</p><p> -20% 0FF </p><p>$215.10</p><a href="https://www.amazon.com/dp/B0FH5K1T3Q?tag=eloabder-20&linkCode=osi&th=1&psc=1">View Product</a></div>                </div>
+
+                <!-- Bouton flottant -->
+                <button class="floating-button" onclick="window.location.href='https://www.iasmarket.us'">HOME</button>
+            
+                <!-- Pagination -->
+                <div class="pagination">
+                        </div>
+
+            <script>
+                function updateTime() {
+                    const optionsDate = {
+                        timeZone: 'America/Los_Angeles',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        weekday: 'long'
+                    };
+                    const optionsTime = {
+                        timeZone: 'America/Los_Angeles',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit'
+                    };
+        
+                    const now = new Date();
+                    const formatterDate = new Intl.DateTimeFormat('en-US', optionsDate);
+                    const formatterTime = new Intl.DateTimeFormat('en-US', optionsTime);
+        
+                    const formattedDate = formatterDate.format(now);
+                    const formattedTime = formatterTime.format(now);
+        
+                    document.getElementById('comment').textContent = "As an AMAZON Associate, I earn from qualifying purchases.";
+                    document.getElementById('date').textContent = formattedDate;
+                    document.getElementById('time').textContent = formattedTime;
+                }
+        
+                updateTime();
+                setInterval(updateTime, 1000);
+        
+                function filterProducts() {
+                    const input = document.getElementById('searchInput');
+                    const filter = input.value.toLowerCase();
+                    const container = document.getElementById('productContainer');
+                    const products = container.getElementsByClassName('product');
+        
+                    for (let i = 0; i < products.length; i++) {
+                        const product = products[i];
+                        const text = product.textContent || product.innerText;
+                        if (text.toLowerCase().indexOf(filter) > -1) {
+                            product.style.display = "";
+                        } else {
+                            product.style.display = "none";
+                        }
+                    }
+                }
+            </script>
+             </body>
+        
+            </html>
+        
